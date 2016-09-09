@@ -6,7 +6,7 @@
 
 <img src="https://linuxcontainers.org/static/img/containers.png" width="100"> + <img src="https://d3nmt5vlzunoa1.cloudfront.net/phpstorm/files/2015/10/large_v-trans.png" width="150"> +  <img src="https://www.python.org/static/opengraph-icon-200x200.png" width="100"> =  <img src="http://i2.kym-cdn.com/photos/images/original/000/869/487/ccf.png" width="75">
 
-## Containers + Pyton = Awesome
+## Containers + Python = Awesome
 
 This repository contains code and instructions for the [Python North East](http://pythonnortheast.co.uk/) talk on container scripting using python.
 
@@ -20,7 +20,7 @@ However, [LXD](https://linuxcontainers.org/lxd/) is a Linux only system. To use 
 
 Alternatively, you can have a mess around in a sandbox container at the LXD [try it page](https://linuxcontainers.org/lxd/try-it).
 
-### Required libraires
+### Required libraries
 
 This talk uses the Python libraires for both [LXD](https://linuxcontainers.org/lxd/) and [Docker](https://www.docker.com/). On Ubuntu these can be installed via:
 
