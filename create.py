@@ -1,4 +1,4 @@
-from pylxd.client import Client
+from pylxd import Client
 
 #Create a connection to the local LXD deamon
 c = Client()
@@ -11,17 +11,10 @@ profiles = ["default", "docker"]
 #Create the container dict and give the container a name
 config = {'name': 'Docker1', 'source': source, "profiles": profiles}
 
-#Issue the create command, this can bd done asynchronsly if wait is set to False
-c.containers.create(config, wait=True)
+#Issue the create command, this can be done asynchronsly if wait is set to False
+container = c.containers.create(config, wait=True)
 
-#Get the instance for the new container
-docker = c.containers.get("Docker1")
-
-print "Container {} is currently {}".format(docker.name, docker.status)
+print "Container {} is currently {}".format(container.name, container.status)
 
 #Start the container
-docker.start(wait=True)
-#Update the container instance
-docker.update()
-
-print "Container {} is currently {}".format(docker.name, docker.status)
+container.start(wait=True)
