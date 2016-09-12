@@ -69,3 +69,6 @@ for i in range(2,10):
     w = c.containers.create({'name': 'Worker{}'.format(i), 'source': {'type': 'image', "alias" : "StormWorker"}, "profiles": profiles}, wait=True)
     w.start()
     workers.append(w)
+
+#Could also snapshot servers at different stages and create images from those snapshots.
+#pylxd also allows you to migrate workers between lxd servers
