@@ -10,6 +10,8 @@ container = c.containers.get("Docker1")
 if container.status != "Running":
     container.start()
 
+print "Docker container is running"
+
 #Install Docker in the new container
 
 #First update the repository database inside the container
@@ -20,9 +22,23 @@ output = container.execute(["apt-get", "update"])
 if output[1]:
     print "Errors returned:"
     print output[1]
-
-#Upgrade any packages
-output = container.execute(["apt-get", "dist-upgrade", "-y"])
+else:
+    print "Repo update complete"
 
 #Install Docker
 output = container.execute(["apt-get", "install", "docker.io", "-y"])
+
+print "Docker install complete"
+
+#Add config files to docker to make avalible remotely
+#This is a quick unsecure hack, never do this in production
+container.files.put("/etc/default/docker", open("docker","r"))
+
+#Restart docker with the new config
+output = container.execute(["service", "docker", "restart"])
+
+if output[1]:
+    print "Errors returned:"
+    print output[1]
+else:
+    print "Docker config and restart complete"
