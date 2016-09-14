@@ -1,4 +1,8 @@
+#This is an example setup script for a storm cluster and will not run correctly
+#unless all the required storm config folders are avalible.
+
 from pylxd import Client
+
 c = Client()
 
 #Create config values
@@ -31,7 +35,7 @@ output = zk.execute(["supervisorctl", "update"])
 
 ###### Create Nimbus Server ######
 
-#...
+#...Similar setup to the zookeeper setup above
 
 ###### Create Storm Workers ######
 
@@ -70,5 +74,5 @@ for i in range(2,10):
     w.start()
     workers.append(w)
 
-#Could also snapshot servers at different stages and create images from those snapshots.
+#You could also snapshot servers at different stages and create images from those snapshots.
 #pylxd also allows you to migrate workers between lxd servers

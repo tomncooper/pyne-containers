@@ -7,8 +7,8 @@ c = Client()
 container = c.containers.get("Docker1")
 
 #The status command lets you know the current state of the container on the server
-if container.status != "Running":
-    container.start()
+if container.state().status != "Running":
+    container.start(wait=True)
 
 print "Docker container is running"
 
@@ -31,8 +31,8 @@ output = container.execute(["apt-get", "install", "docker.io", "-y"])
 print "Docker install complete"
 
 #Add config files to docker to make avalible remotely
-#This is a quick unsecure hack, never do this in production
-container.files.put("/etc/default/docker", open("docker","r"))
+#This is a quick unsecure hack, don't do this in production!
+container.files.put("/etc/default/docker", open("docker","rb"))
 
 #Restart docker with the new config
 output = container.execute(["service", "docker", "restart"])
